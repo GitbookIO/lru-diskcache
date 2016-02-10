@@ -1,5 +1,6 @@
 var tmp = require('tmp');
 var path = require('path');
+var Stream = require('stream');
 var fs = require('fs');
 require('should');
 
@@ -40,6 +41,12 @@ describe('Diskcache', function() {
 
         it('should accept an encoding options', function() {
             return cache.get('test_string', { encoding: 'utf8' }).should.be.finally.a.String;
+        });
+    });
+
+    describe('#getStream', function() {
+        it('should return a stream', function() {
+            return cache.getStream('test_string').should.be.finally.an.instanceof(Stream);
         });
     });
 
