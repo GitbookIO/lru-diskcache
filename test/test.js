@@ -22,15 +22,15 @@ describe('Diskcache', function() {
 
     describe('#set', function() {
         it('should accept a string', function() {
-            cache.set('test_string', 'hello');
+            return cache.set('test_string', 'hello');
         });
 
         it('should accept a buffer', function() {
-            cache.set('test_buffer', new Buffer('hello', 'utf8'));
+            return cache.set('test_buffer', new Buffer('hello', 'utf8'));
         });
 
         it('should accept a strean', function() {
-            cache.set('test_stream', fs.createReadStream(path.join(__dirname, '../package.json')));
+            return cache.set('test_stream', fs.createReadStream(path.join(__dirname, '../package.json')));
         });
     });
 
@@ -66,6 +66,26 @@ describe('Diskcache', function() {
             cache.has('test_string').should.equal(false);
         });
     });
+
+    describe('#size', function() {
+        var lcache = createCache(10);
+
+        before(function() {
+            return lcache.set('test', 'hello');
+        });
+
+        it('should return total length of cache', function() {
+            lcache.size().should.equal(5);
+        });
+
+        it('should correctly limit size', function() {
+            return lcache.set('test2', 'hello 2')
+            .then(function() {
+                lcache.has('test').should.equal(false);
+                lcache.size().should.equal(7);
+            });
+        })
+    })
 
 });
 

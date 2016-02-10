@@ -49,4 +49,10 @@ cache.has(key)
 
 // Delete a key from the cache
 cache.del(key)
+
+// Return total length of objects in cache taking into account
+cache.size()
+
+// Manually iterates over the entire cache proactively pruning old entries
+cache.prune()
 ```
