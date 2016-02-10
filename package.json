@@ -13,11 +13,12 @@
         "lodash": "^3.10.1",
         "lru-cache": "4.0.0",
         "mkdirp": "0.5.1",
-        "destroy": "1.0.4"
+        "destroy": "1.0.4",
+        "tmp": "0.0.28"
     },
     "devDependencies": {
-        "mocha": "1.18.2",
-        "should": "7.0.4"
+        "mocha": "2.4.5",
+        "should": "8.2.2"
     },
     "scripts": {
         "test": "node_modules/.bin/mocha --reporter spec --timeout 15000"
