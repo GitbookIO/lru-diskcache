@@ -60,5 +60,12 @@ describe('Diskcache', function() {
         });
     });
 
+    describe('#del', function() {
+        it('should remove the key', function() {
+            cache.del('test_string');
+            cache.has('test_string').should.equal(false);
+        });
+    });
+
 });
 
