@@ -1,0 +1,26 @@
+{
+    "name": "lru-diskcache",
+    "version": "0.0.0",
+    "description": "A disk cache object that deletes the least-recently-used items.",
+    "author": "Samy Pesse <samypesse@gmail.com>",
+    "main": "./lib/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GitbookIO/lru-diskcache.git"
+    },
+    "dependencies": {
+        "q": "^1.4.1",
+        "lodash": "^3.10.1",
+        "lru-cache": "4.0.0",
+        "mkdirp": "0.5.1",
+        "destroy": "1.0.4"
+    },
+    "devDependencies": {
+        "mocha": "1.18.2",
+        "should": "7.0.4"
+    },
+    "scripts": {
+        "test": "node_modules/.bin/mocha --reporter spec --timeout 15000"
+    },
+    "license": "Apache-2.0"
+}
