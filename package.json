@@ -14,7 +14,8 @@
         "lru-cache": "4.0.0",
         "fs-extra": "^0.26.5",
         "destroy": "1.0.4",
-        "tmp": "0.0.28"
+        "tmp": "0.0.28",
+        "crc": "3.4.0"
     },
     "devDependencies": {
         "mocha": "2.4.5",
