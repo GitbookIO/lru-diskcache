@@ -1,3 +1,4 @@
+var Q = require('q');
 var tmp = require('tmp');
 var path = require('path');
 var Stream = require('stream');
@@ -6,11 +7,9 @@ require('should');
 
 var LRU = require('../');
 
-function createCache(max) {
+function createCache(opts) {
     var tmpobj = tmp.dirSync();
-    var cache = LRU(tmpobj.name, {
-        max: max
-    })
+    var cache = LRU(tmpobj.name, opts);
     cache.init();
 
     return cache;
@@ -68,7 +67,9 @@ describe('Diskcache', function() {
     });
 
     describe('#size', function() {
-        var lcache = createCache(10);
+        var lcache = createCache({
+            max: 10
+        });
 
         before(function() {
             return lcache.set('test', 'hello');
@@ -85,7 +86,33 @@ describe('Diskcache', function() {
                 lcache.size().should.equal(7);
             });
         })
-    })
+    });
+
+    describe('#entries', function() {
+        var lcache = createCache({
+            maxEntries: 3
+        });
+
+        before(function() {
+            return Q.all([
+                lcache.set('test', 'hello'),
+                lcache.set('test2', 'hello2'),
+                lcache.set('test3', 'hello3')
+            ]);
+        });
+
+        it('should return total number of keys in cache', function() {
+            lcache.size().should.equal(3);
+        });
+
+        it('should correctly limit size', function() {
+            return lcache.set('test4', 'hello4')
+            .then(function() {
+                lcache.has('test').should.equal(false);
+                lcache.size().should.equal(3);
+            });
+        })
+    });
 
 });
 
