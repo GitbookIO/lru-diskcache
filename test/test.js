@@ -94,11 +94,13 @@ describe('Diskcache', function() {
         });
 
         before(function() {
-            return Q.all([
-                lcache.set('test', 'hello'),
-                lcache.set('test2', 'hello2'),
-                lcache.set('test3', 'hello3')
-            ]);
+            return lcache.set('test', 'hello')
+            .then(function() {
+                return lcache.set('test2', 'hello2');
+            })
+            .then(function() {
+                return lcache.set('test3', 'hello3');
+            });
         });
 
         it('should return total number of keys in cache', function() {
@@ -108,8 +110,8 @@ describe('Diskcache', function() {
         it('should correctly limit size', function() {
             return lcache.set('test4', 'hello4')
             .then(function() {
-                lcache.has('test').should.equal(false);
                 lcache.size().should.equal(3);
+                lcache.has('test').should.equal(false);
             });
         })
     });
