@@ -1,5 +1,7 @@
 # lru-diskcache
 
+Modified from GitbookIO lru-diskcache to fix npm audit issues. Test coverage is low on this, recommend using the original lru-diskcache.
+
 [![Build Status](https://travis-ci.org/GitbookIO/lru-diskcache.svg?branch=master)](https://travis-ci.org/GitbookIO/lru-diskcache)
 
 A disk cache object that deletes the least-recently-used items. Based on [lru-cache](https://github.com/isaacs/node-lru-cache).

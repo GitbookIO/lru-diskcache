@@ -1,28 +1,28 @@
 {
-    "name": "lru-diskcache",
-    "version": "1.1.1",
+    "name": "@ironfly/lru-diskcache",
+    "version": "1.1.2",
     "description": "A disk cache object that deletes the least-recently-used items.",
     "author": "Samy Pesse <samypesse@gmail.com>",
     "main": "./lib/index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/GitbookIO/lru-diskcache.git"
+        "url": "https://github.com/ironflytech/lru-diskcache.git"
     },
     "dependencies": {
-        "q": "^1.4.1",
-        "lodash": "^3.10.1",
-        "lru-cache": "^4.0.0",
-        "fs-extra": "^0.26.5",
-        "tmp": "^0.0.28",
         "crc": "^3.4.0",
-        "fswrite-stream": "^1.0.0"
+        "fs-extra": "^0.26.5",
+        "fswrite-stream": "^1.0.0",
+        "lodash": "^4.17.10",
+        "lru-cache": "^4.1.5",
+        "q": "^1.4.1",
+        "tmp": "^0.0.28"
     },
     "devDependencies": {
-        "mocha": "2.4.5",
-        "should": "8.2.2"
+        "mocha": "^9.0.1",
+        "should": "^11.1.0"
     },
     "scripts": {
-        "test": "node_modules/.bin/mocha --reporter spec --timeout 15000"
+        "test": "mocha --reporter spec --timeout 15000"
     },
     "license": "Apache-2.0"
 }
