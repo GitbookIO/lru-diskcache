@@ -25,7 +25,7 @@ describe('Diskcache', function() {
         });
 
         it('should accept a buffer', function() {
-            return cache.set('test_buffer', new Buffer('hello', 'utf8'));
+            return cache.set('test_buffer', Buffer.from('hello', 'utf8'));
         });
 
         it('should accept a strean', function() {
